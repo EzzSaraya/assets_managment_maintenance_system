@@ -4,7 +4,7 @@ import Assets from "./pages/Assets";
 import ServiceRequests from "./pages/ServiceRequests";
 import WorkOrders from "./pages/WorkOrders";
 import MaintenanceSchedules from "./pages/MaintenanceSchedules";
-
+import Reports from "./pages/Reports";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleRedirect from "./components/RoleRedirect";
 import Login from "./pages/Login";
@@ -91,6 +91,15 @@ function App() {
     </ProtectedRoute>
   }
 />
+<Route
+  path="/reports"
+  element={
+    <ProtectedRoute allowedRoles={["ADMIN", "MANAGER", "TECHNICIAN", "EMPLOYEE"]}>
+      <Reports />
+    </ProtectedRoute>
+  }
+/>
+
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </BrowserRouter>

@@ -63,9 +63,12 @@ function DashboardLayout({ title, description }) {
           </div>
 
           <div className="dashboard-card">
-            <h3>Reports</h3>
-            <p>Managers will review maintenance history and reports.</p>
-          </div>
+  <h3>Reports</h3>
+  <p>Review maintenance history, cost, downtime, and system reports.</p>
+  <Link className="card-link" to="/reports">
+    Open Reports
+  </Link>
+</div>
         </section>
       </main>
     </div>
