@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getStoredUser, logout } from "../services/authService";
-
+import { Link } from "react-router-dom";
 function DashboardLayout({ title, description }) {
   const navigate = useNavigate();
   const user = getStoredUser();
@@ -30,10 +30,13 @@ function DashboardLayout({ title, description }) {
         </section>
 
         <section className="dashboard-grid">
-          <div className="dashboard-card">
-            <h3>Assets</h3>
-            <p>Asset management module will be added in the next increment.</p>
-          </div>
+        <div className="dashboard-card">
+  <h3>Assets</h3>
+  <p>View and manage company assets.</p>
+  <Link className="card-link" to="/assets">
+    Open Assets
+  </Link>
+</div>
 
           <div className="dashboard-card">
             <h3>Service Requests</h3>

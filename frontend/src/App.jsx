@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Assets from "./pages/Assets";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleRedirect from "./components/RoleRedirect";
@@ -54,6 +55,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+  path="/assets"
+  element={
+    <ProtectedRoute allowedRoles={["ADMIN", "MANAGER", "TECHNICIAN", "EMPLOYEE"]}>
+      <Assets />
+    </ProtectedRoute>
+  }
+/>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
