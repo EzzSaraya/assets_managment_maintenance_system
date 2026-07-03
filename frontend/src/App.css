@@ -341,3 +341,22 @@ body {
     width: 100%;
   }
 }
+
+.assets-table select,
+.table-notes {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.table-notes {
+  min-width: 220px;
+  min-height: 70px;
+  resize: vertical;
+}
+
+.assets-table span {
+  color: #4b5563;
+  font-size: 14px;
+}

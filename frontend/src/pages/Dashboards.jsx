@@ -39,10 +39,12 @@ function DashboardLayout({ title, description }) {
 </div>
 
           <div className="dashboard-card">
-            <h3>Service Requests</h3>
-            <p>Employees will be able to submit maintenance requests.</p>
-          </div>
-
+  <h3>Service Requests</h3>
+  <p>Create and track maintenance service requests.</p>
+  <Link className="card-link" to="/service-requests">
+    Open Service Requests
+  </Link>
+</div>
           <div className="dashboard-card">
             <h3>Work Orders</h3>
             <p>Technicians will receive and update assigned work orders.</p>

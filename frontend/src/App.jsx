@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Assets from "./pages/Assets";
+import ServiceRequests from "./pages/ServiceRequests";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleRedirect from "./components/RoleRedirect";
@@ -60,6 +61,14 @@ function App() {
   element={
     <ProtectedRoute allowedRoles={["ADMIN", "MANAGER", "TECHNICIAN", "EMPLOYEE"]}>
       <Assets />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/service-requests"
+  element={
+    <ProtectedRoute allowedRoles={["ADMIN", "MANAGER", "TECHNICIAN", "EMPLOYEE"]}>
+      <ServiceRequests />
     </ProtectedRoute>
   }
 />
