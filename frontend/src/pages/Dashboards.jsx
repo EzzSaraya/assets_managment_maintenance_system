@@ -46,10 +46,12 @@ function DashboardLayout({ title, description }) {
   </Link>
 </div>
           <div className="dashboard-card">
-            <h3>Work Orders</h3>
-            <p>Technicians will receive and update assigned work orders.</p>
-          </div>
-
+  <h3>Work Orders</h3>
+  <p>Create, assign, and track maintenance work orders.</p>
+  <Link className="card-link" to="/work-orders">
+    Open Work Orders
+  </Link>
+</div>
           <div className="dashboard-card">
             <h3>Reports</h3>
             <p>Managers will review maintenance history and reports.</p>

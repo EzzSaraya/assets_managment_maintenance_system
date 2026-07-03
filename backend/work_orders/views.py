@@ -1,4 +1,5 @@
 from rest_framework import filters, viewsets
+from rest_framework.exceptions import PermissionDenied
 
 from .models import WorkOrder
 from .permissions import WorkOrderPermission
@@ -51,3 +52,23 @@ class WorkOrderViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
+
+    def perform_update(self, serializer):
+        role = getattr(getattr(self.request.user, "profile", None), "role", None)
+
+        if role == "TECHNICIAN":
+            allowed_fields = {
+                "status",
+                "progress_percentage",
+                "technician_notes",
+                "completion_date",
+            }
+
+            submitted_fields = set(serializer.validated_data.keys())
+
+            if not submitted_fields.issubset(allowed_fields):
+                raise PermissionDenied(
+                    "Technicians can only update status, progress, completion date, and technician notes."
+                )
+
+        serializer.save()

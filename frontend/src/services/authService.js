@@ -69,3 +69,18 @@ export function getDashboardPath(role) {
       return "/login";
   }
 }
+export async function getTechnicians() {
+  const token = localStorage.getItem("accessToken");
+
+  const response = await fetch(`${API_BASE_URL}/auth/technicians/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch technicians");
+  }
+
+  return response.json();
+}
