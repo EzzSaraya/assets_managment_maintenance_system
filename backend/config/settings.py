@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     "corsheaders",
 
     #  Project apps
-     "accounts",
+     "accounts.apps.AccountsConfig",
      "assets",
      "service_requests",
      "work_orders",
@@ -119,7 +119,7 @@ CORS_ALLOWED_ORIGINS = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
