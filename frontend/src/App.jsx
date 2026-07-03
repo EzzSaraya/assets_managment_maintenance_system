@@ -3,6 +3,7 @@ import "./App.css";
 import Assets from "./pages/Assets";
 import ServiceRequests from "./pages/ServiceRequests";
 import WorkOrders from "./pages/WorkOrders";
+import MaintenanceSchedules from "./pages/MaintenanceSchedules";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleRedirect from "./components/RoleRedirect";
@@ -78,6 +79,15 @@ function App() {
   element={
     <ProtectedRoute allowedRoles={["ADMIN", "MANAGER", "TECHNICIAN", "EMPLOYEE"]}>
       <WorkOrders />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/maintenance-schedules"
+  element={
+    <ProtectedRoute allowedRoles={["ADMIN", "MANAGER", "TECHNICIAN", "EMPLOYEE"]}>
+      <MaintenanceSchedules />
     </ProtectedRoute>
   }
 />

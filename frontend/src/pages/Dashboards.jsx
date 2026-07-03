@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getStoredUser, logout } from "../services/authService";
-import { Link } from "react-router-dom";
+
 function DashboardLayout({ title, description }) {
   const navigate = useNavigate();
   const user = getStoredUser();
@@ -30,28 +30,38 @@ function DashboardLayout({ title, description }) {
         </section>
 
         <section className="dashboard-grid">
-        <div className="dashboard-card">
-  <h3>Assets</h3>
-  <p>View and manage company assets.</p>
-  <Link className="card-link" to="/assets">
-    Open Assets
-  </Link>
-</div>
+          <div className="dashboard-card">
+            <h3>Assets</h3>
+            <p>View and manage company assets.</p>
+            <Link className="card-link" to="/assets">
+              Open Assets
+            </Link>
+          </div>
 
           <div className="dashboard-card">
-  <h3>Service Requests</h3>
-  <p>Create and track maintenance service requests.</p>
-  <Link className="card-link" to="/service-requests">
-    Open Service Requests
-  </Link>
-</div>
+            <h3>Service Requests</h3>
+            <p>Create and track maintenance service requests.</p>
+            <Link className="card-link" to="/service-requests">
+              Open Service Requests
+            </Link>
+          </div>
+
           <div className="dashboard-card">
-  <h3>Work Orders</h3>
-  <p>Create, assign, and track maintenance work orders.</p>
-  <Link className="card-link" to="/work-orders">
-    Open Work Orders
-  </Link>
-</div>
+            <h3>Work Orders</h3>
+            <p>Create, assign, and track maintenance work orders.</p>
+            <Link className="card-link" to="/work-orders">
+              Open Work Orders
+            </Link>
+          </div>
+
+          <div className="dashboard-card">
+            <h3>Maintenance Schedules</h3>
+            <p>Plan preventive maintenance and track upcoming due dates.</p>
+            <Link className="card-link" to="/maintenance-schedules">
+              Open Maintenance Schedules
+            </Link>
+          </div>
+
           <div className="dashboard-card">
             <h3>Reports</h3>
             <p>Managers will review maintenance history and reports.</p>
