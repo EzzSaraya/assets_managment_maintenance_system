@@ -1,21 +1,63 @@
-import { useEffect, useState } from "react";
-import { healthCheck } from "./services/api";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import "./App.css";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+import RoleRedirect from "./components/RoleRedirect";
+import Login from "./pages/Login";
+import {
+  AdminDashboard,
+  EmployeeDashboard,
+  ManagerDashboard,
+  TechnicianDashboard,
+} from "./pages/Dashboards";
 
 function App() {
-  const [message, setMessage] = useState("Checking backend connection...");
-
-  useEffect(() => {
-    healthCheck()
-      .then((data) => setMessage(data.message))
-      .catch(() => setMessage("Backend connection failed"));
-  }, []);
-
   return (
-    <div style={{ padding: "40px", fontFamily: "Arial" }}>
-      <h1>Enterprise Asset and Maintenance Management System</h1>
-      <h2>React Frontend</h2>
-      <p>{message}</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<RoleRedirect />} />
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/employee"
+          element={
+            <ProtectedRoute allowedRoles={["EMPLOYEE"]}>
+              <EmployeeDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/technician"
+          element={
+            <ProtectedRoute allowedRoles={["TECHNICIAN"]}>
+              <TechnicianDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/manager"
+          element={
+            <ProtectedRoute allowedRoles={["MANAGER"]}>
+              <ManagerDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
